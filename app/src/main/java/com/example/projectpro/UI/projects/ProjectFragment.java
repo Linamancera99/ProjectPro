@@ -10,12 +10,17 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectpro.R;
 
-public class ProjectFragment extends Fragment {
+import java.util.ArrayList;
+
+public class ProjectFragment extends Fragment implements ProjectsAdapter.OnItemClickListener{
 
     private ProjectsViewModel viewModel;
+    private RecyclerView recyclerView;
 
     @Nullable
     @Override
@@ -26,11 +31,25 @@ public class ProjectFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        ProjectsAdapter adapter = new ProjectsAdapter(new ArrayList<>());
+        recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListener(this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         viewModel = new ProjectsViewModel();
         viewModel.fetchProjects();
+
         viewModel.getProjects().observe(getViewLifecycleOwner(), projectModels -> {
+            adapter.updateData(projectModels);
+            adapter.notifyDataSetChanged();
             Log.d("working", "working");
-            Toast.makeText(getContext(), "works", Toast.LENGTH_SHORT).show();
         });
+    }
+
+    @Override
+    public void onItemClick(int position) {
+    
     }
 }

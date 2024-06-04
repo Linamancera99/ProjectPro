@@ -21,6 +21,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        setFragment(new ProjectFragment());
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             Fragment selectedFragment = null;
@@ -33,13 +34,17 @@ public class HomeActivity extends AppCompatActivity {
                 } else if (itemId == R.id.navigation_profile) {
                     selectedFragment = new ProfileFragment();
                 }
-                if (selectedFragment != null) {
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragment_container, selectedFragment)
-                            .commit();
-                }
+                setFragment(selectedFragment);
                 return true;
             }
         });
+    }
+
+    private void setFragment(Fragment fragment) {
+        if (fragment != null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .commit();
+        }
     }
 }
