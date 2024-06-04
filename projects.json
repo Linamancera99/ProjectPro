@@ -1,0 +1,38 @@
+[
+  {
+    "nombre_proyecto": "Proyecto Alpha",
+    "descripcion": "Este es un proyecto para el desarrollo de una aplicación móvil.",
+    "fecha_inicio": "2024-01-01",
+    "fecha_fin": "2024-06-01",
+    "estado": "En progreso",
+    "tareas": [
+      "Definir requisitos",
+      "Diseñar interfaz",
+      "Implementar funcionalidades"
+    ]
+  },
+  {
+    "nombre_proyecto": "Proyecto Beta",
+    "descripcion": "Este es un proyecto para la creación de una página web.",
+    "fecha_inicio": "2024-02-15",
+    "fecha_fin": "2024-08-15",
+    "estado": "Planificado",
+    "tareas": [
+      "Configurar servidor",
+      "Desarrollar frontend",
+      "Integrar backend"
+    ]
+  },
+  {
+    "nombre_proyecto": "Proyecto Gamma",
+    "descripcion": "Este es un proyecto para la actualización del sistema interno.",
+    "fecha_inicio": "2024-03-01",
+    "fecha_fin": "2024-09-01",
+    "estado": "Completado",
+    "tareas": [
+      "Revisar documentación",
+      "Actualizar base de datos",
+      "Realizar pruebas"
+    ]
+  }
+]
