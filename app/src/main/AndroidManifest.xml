@@ -15,13 +15,17 @@
         android:theme="@style/Theme.ProjectPro"
         tools:targetApi="31">
 
-        <activity android:name=".UI.HomeActivity"
+        <activity android:name=".UI.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".UI.HomeActivity" />
+        <activity android:name=".UI.ForgotPasswordActivity" />
+        <activity android:name=".UI.RegisterActivity" />
 
     </application>
 
