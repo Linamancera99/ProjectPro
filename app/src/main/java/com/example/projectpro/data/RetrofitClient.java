@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
     private static Retrofit retrofit;
-    private static final String BASE_URL = "https://raw.githubusercontent.com/Linamancera99/ProjectPro/main/";
+    private static final String BASE_URL = "https://projectproback-1.onrender.com/api/";
 
     public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {

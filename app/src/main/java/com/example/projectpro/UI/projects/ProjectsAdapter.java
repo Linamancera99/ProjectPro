@@ -41,7 +41,7 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ProjectModel project = projects.get(position);
         holder.titleTextView.setText(project.getNombreProyecto());
-        holder.tasksTextView.setText(String.valueOf(project.getTareas().size()));
+        holder.tasksTextView.setText("Tareas:" + String.valueOf(project.getTareas().size()));
         holder.itemView.setOnClickListener(v -> listener.onItemClick(position));
     }
 
