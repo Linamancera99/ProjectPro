@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -15,7 +15,10 @@
         android:theme="@style/Theme.ProjectPro"
         tools:targetApi="31">
 
-        <activity android:name=".UI.LoginActivity"
+        <activity android:name=".UI.LoginActivity" />
+
+        <activity
+            android:name=".UI.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,9 +26,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".UI.HomeActivity" />
         <activity android:name=".UI.ForgotPasswordActivity" />
         <activity android:name=".UI.RegisterActivity" />
+
+        <activity android:name=".UI.projectDetail.ProjectDetailActivity" />
+        <activity android:name=".UI.createProject.CreateProjectActivity" />
 
     </application>
 

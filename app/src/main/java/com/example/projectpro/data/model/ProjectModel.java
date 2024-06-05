@@ -4,20 +4,23 @@ import java.util.List;
 
 public class ProjectModel {
 
-    private String nombre_proyecto;
+    private Integer id_proyecto;
+    private Integer id_usuario;
+    private String estado_proyecto;
+    private String nombre;
     private String descripcion;
     private String fecha_inicio;
     private String fecha_fin;
     private String estado;
-    private List<String> tareas;
+    private List<TaskModel> tareas;
 
     // Getters and Setters (optional)
     public String getNombreProyecto() {
-        return nombre_proyecto;
+        return nombre;
     }
 
     public void setNombreProyecto(String nombreProyecto) {
-        this.nombre_proyecto = nombreProyecto;
+        this.nombre = nombreProyecto;
     }
 
     public String getDescripcion() {
@@ -52,22 +55,33 @@ public class ProjectModel {
         this.estado = estado;
     }
 
-    public List<String> getTareas() {
+    public List<TaskModel> getTareas() {
         return tareas;
     }
 
-    public void setTareas(List<String> tareas) {
+    public void setTareas(List<TaskModel> tareas) {
         this.tareas = tareas;
     }
 
-    // You can also add a constructor if needed
+    public ProjectModel() {
+
+    }
+
     public ProjectModel(String nombreProyecto, String descripcion, String fechaInicio,
-                   String fechaFin, String estado, List<String> tareas) {
-        this.nombre_proyecto = nombreProyecto;
+                        String fechaFin, String estado, List<TaskModel> tareas) {
+        this.nombre = nombreProyecto;
         this.descripcion = descripcion;
         this.fecha_inicio = fechaInicio;
         this.fecha_fin = fechaFin;
         this.estado = estado;
         this.tareas = tareas;
+    }
+
+    public Integer getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(Integer id_usuario) {
+        this.id_usuario = id_usuario;
     }
 }

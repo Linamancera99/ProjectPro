@@ -1,4 +1,4 @@
-package com.example.projectpro.UI.projects;
+package com.example.projectpro.UI.createProject;
 
 import android.util.Log;
 
@@ -15,27 +15,34 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class ProjectsViewModel extends ViewModel {
+public class CreateProjectViewModel extends ViewModel {
     private ProjectRepository repository = new ProjectRepository();
-    private MutableLiveData<List<ProjectModel>> projects = new MutableLiveData<>();
     private CompositeDisposable disposable;
 
+    private MutableLiveData<Boolean> projectCreated = new MutableLiveData<>(false);
 
-    public ProjectsViewModel() {
+    public LiveData<Boolean> getProjectCreated() {
+        return projectCreated;
+    }
+
+
+    public CreateProjectViewModel() {
         disposable = new CompositeDisposable();
     }
 
-    public LiveData<List<ProjectModel>> getProjects() {
-        return projects;
-    }
-
-    public void fetchProjects() {
-        disposable.add(repository.getProjects()
+    public void createProject(String name, String initialDate, String finalDate, String description) {
+        ProjectModel projectModel = new ProjectModel();
+        projectModel.setNombreProyecto(name);
+        projectModel.setFechaInicio(initialDate);
+        projectModel.setFechaFin(finalDate);
+        projectModel.setDescripcion(description);
+        projectModel.setId_usuario(20);
+        disposable.add(repository.createProject(projectModel)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(project -> {
+                    projectCreated.setValue(true);
                     Log.d("working", "working");
-                    projects.setValue(project.getProyectos());
                 }, throwable -> {
                     Log.d("not working", "not working");
                     throwable.printStackTrace();
