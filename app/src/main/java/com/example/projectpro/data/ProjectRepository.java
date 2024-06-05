@@ -4,6 +4,7 @@ import com.example.projectpro.data.model.BaseResponse;
 import com.example.projectpro.data.model.LoginRequest;
 import com.example.projectpro.data.model.ProjectModel;
 import com.example.projectpro.data.model.ProjectResponseModel;
+import com.example.projectpro.data.model.UserResponse;
 
 import java.util.List;
 
@@ -28,5 +29,9 @@ public class ProjectRepository {
 
     public Observable<BaseResponse> login(LoginRequest loginRequest) {
         return api.login(loginRequest);
+    }
+
+    public Observable<UserResponse> getUsers() {
+        return api.getUsers();
     }
 }
