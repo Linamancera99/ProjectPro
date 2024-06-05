@@ -42,7 +42,7 @@ public class CreateProjectViewModel extends ViewModel {
         disposable = new CompositeDisposable();
     }
 
-    public void createProject(String name, String initialDate, String finalDate, String description) {
+    public void createProject(String name, String initialDate, String finalDate, String description, String usuario) {
         ProjectModel projectModel = new ProjectModel();
         projectModel.setNombreProyecto(name);
         projectModel.setFechaInicio(initialDate);

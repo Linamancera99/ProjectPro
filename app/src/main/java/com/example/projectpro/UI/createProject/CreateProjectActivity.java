@@ -40,11 +40,14 @@ public class CreateProjectActivity extends AppCompatActivity {
             TextInputEditText inputInitialDate = findViewById(R.id.input_initial_date);
             TextInputEditText inputFinalDate = findViewById(R.id.input_final_date);
             TextInputEditText inputDescription = findViewById(R.id.input_description);
+            TextInputEditText inputUser = findViewById(R.id.input_usuario);
+
             viewModel.createProject(
                     inputName.getText().toString(),
                     inputInitialDate.getText().toString(),
                     inputFinalDate.getText().toString(),
-                    inputDescription.getText().toString()
+                    inputDescription.getText().toString(),
+                    inputUser.getText().toString()
             );
         });
         viewModel.getUsersObservable().observe(this, result -> {
