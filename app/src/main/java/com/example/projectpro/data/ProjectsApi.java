@@ -5,6 +5,7 @@ import com.example.projectpro.data.model.BaseResponse;
 import com.example.projectpro.data.model.LoginRequest;
 import com.example.projectpro.data.model.ProjectModel;
 import com.example.projectpro.data.model.ProjectResponseModel;
+import com.example.projectpro.data.model.UserResponse;
 
 import java.util.List;
 
@@ -23,4 +24,7 @@ public interface ProjectsApi {
 
     @POST("login")
     Observable<BaseResponse> login(@Body LoginRequest loginRequest);
+
+    @GET("listar_usuarios")
+    Observable<UserResponse> getUsers();
 }

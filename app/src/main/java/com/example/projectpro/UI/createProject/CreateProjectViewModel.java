@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.projectpro.data.ProjectRepository;
 import com.example.projectpro.data.model.ProjectModel;
+import com.example.projectpro.data.model.UserModel;
 
 import java.util.List;
 
@@ -20,9 +21,20 @@ public class CreateProjectViewModel extends ViewModel {
     private CompositeDisposable disposable;
 
     private MutableLiveData<Boolean> projectCreated = new MutableLiveData<>(false);
+    private MutableLiveData<List<UserModel>> users = new MutableLiveData<>();
 
     public LiveData<Boolean> getProjectCreated() {
         return projectCreated;
+    }
+
+    public int userSelected = 0;
+
+    public void setUserSelected(int userSelected) {
+        this.userSelected = userSelected;
+    }
+
+    public LiveData<List<UserModel>> getUsersObservable() {
+        return users;
     }
 
 
@@ -36,12 +48,32 @@ public class CreateProjectViewModel extends ViewModel {
         projectModel.setFechaInicio(initialDate);
         projectModel.setFechaFin(finalDate);
         projectModel.setDescripcion(description);
-        projectModel.setId_usuario(20);
+
+        if (users.getValue() != null) {
+            projectModel.setId_usuario(users.getValue().get(userSelected).getIdUsuario());
+        } else {
+            projectModel.setId_usuario(20);
+        }
+
         disposable.add(repository.createProject(projectModel)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(project -> {
                     projectCreated.setValue(true);
+                    Log.d("working", "working");
+                }, throwable -> {
+                    Log.d("not working", "not working");
+                    throwable.printStackTrace();
+                })
+        );
+    }
+
+    public void getUsers() {
+        disposable.add(repository.getUsers()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(userResponse -> {
+                    users.setValue(userResponse.getUsuarios());
                     Log.d("working", "working");
                 }, throwable -> {
                     Log.d("not working", "not working");

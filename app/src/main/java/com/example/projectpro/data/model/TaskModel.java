@@ -6,7 +6,7 @@ public class TaskModel {
     private String fechaInicioTarea;
     private int idProyecto;
     private int idTarea;
-    private String nombreTarea;
+    private String nombre_tarea;
 
     // Constructor
     public TaskModel(String descripcionTarea, String fechaFinTarea, String fechaInicioTarea, int idProyecto, int idTarea, String nombreTarea) {
@@ -15,7 +15,7 @@ public class TaskModel {
         this.fechaInicioTarea = fechaInicioTarea;
         this.idProyecto = idProyecto;
         this.idTarea = idTarea;
-        this.nombreTarea = nombreTarea;
+        this.nombre_tarea = nombreTarea;
     }
 
     // Getters and Setters
@@ -60,11 +60,11 @@ public class TaskModel {
     }
 
     public String getNombreTarea() {
-        return nombreTarea;
+        return nombre_tarea;
     }
 
     public void setNombreTarea(String nombreTarea) {
-        this.nombreTarea = nombreTarea;
+        this.nombre_tarea = nombreTarea;
     }
 
     @Override
@@ -75,7 +75,7 @@ public class TaskModel {
                 ", fechaInicioTarea='" + fechaInicioTarea + '\'' +
                 ", idProyecto=" + idProyecto +
                 ", idTarea=" + idTarea +
-                ", nombreTarea='" + nombreTarea + '\'' +
+                ", nombreTarea='" + nombre_tarea + '\'' +
                 '}';
     }
 }
