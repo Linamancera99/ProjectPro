@@ -4,12 +4,10 @@ import com.example.projectpro.data.model.BaseResponse;
 import com.example.projectpro.data.model.LoginRequest;
 import com.example.projectpro.data.model.ProjectModel;
 import com.example.projectpro.data.model.ProjectResponseModel;
+import com.example.projectpro.data.model.UserRequest;
 import com.example.projectpro.data.model.UserResponse;
 
-import java.util.List;
-
 import io.reactivex.Observable;
-import retrofit2.http.Body;
 
 public class ProjectRepository {
 
@@ -33,5 +31,9 @@ public class ProjectRepository {
 
     public Observable<UserResponse> getUsers() {
         return api.getUsers();
+    }
+
+    public Observable<BaseResponse> createUser(UserRequest userRequest) {
+        return api.createUser(userRequest);
     }
 }

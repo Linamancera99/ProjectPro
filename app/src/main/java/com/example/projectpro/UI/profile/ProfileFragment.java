@@ -1,5 +1,6 @@
 package com.example.projectpro.UI.profile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.projectpro.R;
+import com.example.projectpro.UI.createUser.CreateUserActivity;
 
 public class ProfileFragment extends Fragment {
 
@@ -17,5 +19,14 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_profile, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getView().findViewById(R.id.button_create_user).setOnClickListener(view1 -> {
+            startActivity(new Intent(getContext(), CreateUserActivity.class));
+        });
+
     }
 }

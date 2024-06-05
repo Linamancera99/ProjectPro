@@ -31,6 +31,7 @@
 
         <activity android:name=".UI.projectDetail.ProjectDetailActivity" />
         <activity android:name=".UI.createProject.CreateProjectActivity" />
+        <activity android:name=".UI.createUser.CreateUserActivity" />
 
     </application>
 
