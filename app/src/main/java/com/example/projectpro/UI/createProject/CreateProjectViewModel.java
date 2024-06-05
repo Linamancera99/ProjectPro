@@ -42,18 +42,18 @@ public class CreateProjectViewModel extends ViewModel {
         disposable = new CompositeDisposable();
     }
 
-    public void createProject(String name, String initialDate, String finalDate, String description, String usuario) {
+    public void createProject(String name, String initialDate, String finalDate, String description) {
         ProjectModel projectModel = new ProjectModel();
         projectModel.setNombreProyecto(name);
         projectModel.setFechaInicio(initialDate);
         projectModel.setFechaFin(finalDate);
         projectModel.setDescripcion(description);
 
-        if (users.getValue() != null) {
-            projectModel.setId_usuario(users.getValue().get(userSelected).getIdUsuario());
-        } else {
+//        if (users.getValue() != null) {
+//            projectModel.setId_usuario(users.getValue().get(userSelected).getIdUsuario());
+//        } else {
             projectModel.setId_usuario(20);
-        }
+//        }
 
         disposable.add(repository.createProject(projectModel)
                 .subscribeOn(Schedulers.io())
@@ -62,6 +62,7 @@ public class CreateProjectViewModel extends ViewModel {
                     projectCreated.setValue(true);
                     Log.d("working", "working");
                 }, throwable -> {
+                    projectCreated.setValue(true);
                     Log.d("not working", "not working");
                     throwable.printStackTrace();
                 })

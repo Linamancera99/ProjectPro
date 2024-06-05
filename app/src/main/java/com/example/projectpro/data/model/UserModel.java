@@ -2,14 +2,14 @@ package com.example.projectpro.data.model;
 
 public class UserModel {
     private String correo;
-    private int idUsuario;
+    private int id_usuario;
     private String nombre;
     private String nombrePerfil;
 
     // Constructor
     public UserModel(String correo, int idUsuario, String nombre, String nombrePerfil) {
         this.correo = correo;
-        this.idUsuario = idUsuario;
+        this.id_usuario = idUsuario;
         this.nombre = nombre;
         this.nombrePerfil = nombrePerfil;
     }
@@ -24,11 +24,11 @@ public class UserModel {
     }
 
     public int getIdUsuario() {
-        return idUsuario;
+        return id_usuario;
     }
 
     public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+        this.id_usuario = idUsuario;
     }
 
     public String getNombre() {
@@ -51,7 +51,7 @@ public class UserModel {
     public String toString() {
         return "Usuario{" +
                 "correo='" + correo + '\'' +
-                ", idUsuario=" + idUsuario +
+                ", idUsuario=" + id_usuario +
                 ", nombre='" + nombre + '\'' +
                 ", nombrePerfil='" + nombrePerfil + '\'' +
                 '}';
