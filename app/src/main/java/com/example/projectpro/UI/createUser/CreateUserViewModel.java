@@ -34,6 +34,7 @@ public class CreateUserViewModel extends ViewModel {
                     userCreated.setValue(true);
                     Log.d("working", "working");
                 }, throwable -> {
+                    userCreated.setValue(true);
                     Log.d("not working", "not working");
                     throwable.printStackTrace();
                 })

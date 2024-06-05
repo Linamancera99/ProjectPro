@@ -32,7 +32,7 @@ public class CreateUserActivity extends AppCompatActivity {
 
         viewModel.getUserCreated().observe(this, result -> {
             if (result) {
-                Toast.makeText(this, "Proyecto creado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Usuario creado", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
