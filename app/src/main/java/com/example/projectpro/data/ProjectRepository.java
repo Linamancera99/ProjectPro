@@ -1,6 +1,7 @@
 package com.example.projectpro.data;
 
 import com.example.projectpro.data.model.BaseResponse;
+import com.example.projectpro.data.model.LoginRequest;
 import com.example.projectpro.data.model.ProjectModel;
 import com.example.projectpro.data.model.ProjectResponseModel;
 
@@ -23,5 +24,9 @@ public class ProjectRepository {
 
     public Observable<BaseResponse> createProject(ProjectModel projectModel) {
         return api.createProject(projectModel);
+    }
+
+    public Observable<BaseResponse> login(LoginRequest loginRequest) {
+        return api.login(loginRequest);
     }
 }
