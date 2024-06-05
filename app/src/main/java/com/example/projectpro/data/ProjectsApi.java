@@ -2,6 +2,7 @@ package com.example.projectpro.data;
 
 
 import com.example.projectpro.data.model.BaseResponse;
+import com.example.projectpro.data.model.LoginRequest;
 import com.example.projectpro.data.model.ProjectModel;
 import com.example.projectpro.data.model.ProjectResponseModel;
 
@@ -20,4 +21,6 @@ public interface ProjectsApi {
     @POST("crear_proyecto")
     Observable<BaseResponse> createProject(@Body ProjectModel project);
 
+    @POST("login")
+    Observable<BaseResponse> login(@Body LoginRequest loginRequest);
 }

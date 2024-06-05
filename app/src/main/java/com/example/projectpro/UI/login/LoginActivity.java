@@ -1,21 +1,24 @@
-package com.example.projectpro.UI;
+package com.example.projectpro.UI.login;
 
-import static android.content.ContentValues.TAG;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.projectpro.R;
+import com.example.projectpro.UI.ForgotPasswordActivity;
+import com.example.projectpro.UI.HomeActivity;
+import com.example.projectpro.UI.RegisterActivity;
 
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends AppCompatActivity {
+
+    private LoginViewModel loginViewModel = new LoginViewModel();
     private EditText emailInput;
     private EditText passwordInput;
     private Button loginButton;
@@ -43,12 +46,7 @@ public class LoginActivity extends Activity {
                 if (email.isEmpty() || password.isEmpty()) {
                     Toast.makeText(LoginActivity.this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
                 } else {
-                    // Aquí puedes añadir tu lógica de autenticación
-                    // Por ejemplo, verificar con la base de datos si el usuario existe y la contraseña es correcta
-                    Toast.makeText(LoginActivity.this, "Iniciando sesión...", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                    startActivity(intent);
-
+                    loginViewModel.login(email, password);
                 }
             }
         });
@@ -56,7 +54,6 @@ public class LoginActivity extends Activity {
         forgotPasswordText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Navegar a la pantalla de recuperación de contraseña
                 Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
                 startActivity(intent);
             }
@@ -65,12 +62,19 @@ public class LoginActivity extends Activity {
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Navegar a la pantalla de recuperación de contraseña
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
-
+        loginViewModel.getLoginStatus().observe(this, result -> {
+            if (result == null) return;
+            if (result) {
+                startActivity(new Intent(this, HomeActivity.class));
+                finish();
+            } else {
+                Toast.makeText(this, "Algo ocurrió mal, vuelve a intentarlo", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
